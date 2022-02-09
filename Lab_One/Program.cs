@@ -6,7 +6,56 @@ namespace Lab_One
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            showMenu();
+        }
+
+        public static void calculatOfCircleArea()
+        {
+            Console.WriteLine("Введите радиус окружности:");
+            double r = Convert.ToDouble(Console.ReadLine());
+            if (r > 0)
+            {
+                Console.WriteLine("Ответ : " + Math.PI * Math.Pow(r, 2));
+
+            }
+            else
+            {
+                Console.WriteLine("Ошибка аргумента, перезапустите программу");
+            }
+
+        }
+
+        public static void calculatOfCircleLenght()
+        {
+            Console.WriteLine("Введите радиус окружности:");
+            double r = Convert.ToDouble(Console.ReadLine());
+            if (r > 0)
+            {
+                Console.WriteLine("Ответ : " + 2 * (Math.PI * r));
+
+            }
+            else
+            {
+                Console.WriteLine("Ошибка аргумента, перезапустите программу");
+            }
+
+        }
+
+        public static void showMenu()
+        {
+            Console.WriteLine("Выберите тип операции, и введите номер операции:");
+            Console.WriteLine(" Для \"Нахождения площади круга\": 1\n Для \"Нахождения длины окружности нажмите\": 2 ");
+            int commandNumber = Convert.ToInt32(Console.ReadLine());
+            switch (commandNumber)
+            {
+                case 1:
+                    calculatOfCircleArea();
+                    break;
+                case 2:
+                    calculatOfCircleLenght();
+                    break;
+            }
+
         }
     }
 }
