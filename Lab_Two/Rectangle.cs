@@ -6,15 +6,15 @@ namespace Lab_Two
 {
     class Rectangle
     {
-<<<<<<< HEAD
-=======
+/*<<<<<<< HEAD
+=======*/
         private double length;
         private double width;
 
         public Rectangle()
         {
-            length = 5;
-            width = 4;
+            length = 5.0;
+            width = 4.0;
         }
 
         public Rectangle(double length, double width)
@@ -45,19 +45,19 @@ namespace Lab_Two
 
         public override string ToString()
         {
-            return "Rectangle's length = " + this.length + " , width = " + this.width;
+            return "It is Rectangle object, length = " + this.length + " , width = " + this.width;
         }
 
-        public virtual double getPerimeter(double length, double width)
+        public virtual double getArea()
         {
-            return 2*(length + width);
+            return this.length * this.width;
         }
 
-        public virtual double getArea(double length, double width)
+        public virtual double getPerimeter()
         {
-            return length * width;
+            return 2 * (this.length + this.width);
         }
 
->>>>>>> 7636fd8e56753b5eab83cd2b18ef173d7d179091
+        /*>>>>>>> 7636fd8e56753b5eab83cd2b18ef173d7d179091*/
     }
 }
