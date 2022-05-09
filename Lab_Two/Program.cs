@@ -35,6 +35,21 @@ namespace Lab_Two
             Console.WriteLine(pyramid2.getVolume());
 
 
+            Rectangle[] objects = new Rectangle[6];
+
+            objects[0] = new Rectangle();
+            objects[1] = new Parallelepiped();
+            objects[2] = new Pyramid();
+            objects[3] = new Rectangle(Convert.ToDouble(Console.ReadLine()), Convert.ToDouble(Console.ReadLine()));
+            objects[4] = new Parallelepiped(Convert.ToDouble(Console.ReadLine()), Convert.ToDouble(Console.ReadLine()), Convert.ToDouble(Console.ReadLine()));
+            objects[5] = new Pyramid(Convert.ToDouble(Console.ReadLine()), Convert.ToDouble(Console.ReadLine()), Convert.ToDouble(Console.ReadLine()));
+
+
+            foreach (Rectangle shape in objects)
+            {
+                Console.WriteLine(shape.ToString());
+            }
+
         }
     }
 }
