@@ -8,16 +8,30 @@ namespace Lab_Three
 {
     internal class Storage
     {
-        private long Capacity;
+        private List<Product> _products;
 
 
         Storage()
         {
-            Capacity = 100;
+            _products = new List<Product>();
         }
-        Storage(long Capacity)
+
+        public int GetCapacity()
         {
-            this.Capacity = Capacity;
+            return _products.Count;
         }
+        public int GetProductCount(Product product)
+        {
+            int count = 0;
+            foreach (Product p in _products)
+            {
+                if (p.GetProductCode() == product.GetProductCode())
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+
     }
 }
