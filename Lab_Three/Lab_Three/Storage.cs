@@ -20,7 +20,7 @@ namespace Lab_Three
         {
             return _products.Count;
         }
-        public int GetProductCount(Product product)
+        public  int GetProductCount(Product product)
         {
             int count = 0;
             foreach (Product p in _products)
@@ -31,6 +31,38 @@ namespace Lab_Three
                 }
             }
             return count;
+        }
+        public  double GetProductBuyingPrice(Product product)
+        {
+            double summ = 0;
+            foreach (Product p in _products)
+            {
+                if (p.GetProductCode() == product.GetProductCode())
+                {
+                    summ += p.GetBuyingPrice();
+                }
+            }
+            return summ;
+
+        }
+
+        public  double GetProductSellingPrice(Product product)
+        {
+            double summ = 0;
+            foreach (Product p in _products)
+            {
+                if (p.GetProductCode() == product.GetProductCode())
+                {
+                    summ += p.GetSellingPrice();
+                }
+            }
+            return summ;
+
+        }
+
+        public double GetProfit(Product product)
+        {
+            return this.GetProductSellingPrice(product) - this.GetProductBuyingPrice(product); 
         }
 
     }

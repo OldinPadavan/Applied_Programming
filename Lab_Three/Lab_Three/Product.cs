@@ -30,6 +30,7 @@ namespace Lab_Three
             this._productCode = ProductCode;
             this._buyingPrice = 0;
             this._sellinglPrice = 0;
+          
         }
 
         public Product(String Name, String Type, int ProductCode, double BuyingPrice, double SellingPrice)
