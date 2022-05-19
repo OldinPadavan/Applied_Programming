@@ -12,34 +12,25 @@ namespace Lab_Three
         {
             Food,
             Hardware,
-            Medical_supplie,
+            Medical_s,
             Tool,
             Unknown
 
         }
         private String _productName;
         private ProductType _productType;
-        private long _productCode;
+        private int _amount;
         private double _buyingPrice;
         private double _sellinglPrice;
 
-         public Product(String Name, String Type, int ProductCode)
-        {
-            this._productName = Name;
-            this._productType = (ProductType) Enum.Parse(typeof(ProductType), Type);
-            this._productCode = ProductCode;
-            this._buyingPrice = 0;
-            this._sellinglPrice = 0;
-          
-        }
-
-        public Product(String Name, String Type, int ProductCode, double BuyingPrice, double SellingPrice)
+    
+        public Product(String Name, String Type,int Amount, double BuyingPrice, double SellingPrice)
         {
             this._productName = Name;
             this._productType = (ProductType)Enum.Parse(typeof(ProductType), Type);
-            this._productCode = ProductCode;
             this._buyingPrice = BuyingPrice;
             this._sellinglPrice = SellingPrice;
+            _amount += Amount;
         }
 
         public void SetProductType(String Type)
@@ -49,10 +40,6 @@ namespace Lab_Three
         public void SetName(String Name)
         {
             this._productName = Name;
-        }
-        public void SetProductCode(long ProductCode)
-        {
-            this._productCode = ProductCode;
         }
         public void SetBuyingPrice(double BuyingPrice)
         {
@@ -71,10 +58,6 @@ namespace Lab_Three
         {
             return this._productType;
         }
-        public long GetProductCode()
-        {
-            return this._productCode;
-        }
         public double GetBuyingPrice()
         {
             return this._buyingPrice;
@@ -83,13 +66,22 @@ namespace Lab_Three
         {
             return this._sellinglPrice;
         }
+        public int GetAmount()
+        {
+            return _amount;
+        }
+        public double GetProfit()
+        {
+            return (this._sellinglPrice - this._buyingPrice) * this._amount;
+        }
 
 
 
 
         public override string? ToString()
         {
-            return this._productName + "\n" + this._productType + "\n" + this._productCode;
+            return this._productName +"\t" + " | "+ "\t" + this._productType + "\t" + " | " + "\t" + this.GetBuyingPrice() +
+            " | " + "\t" + this.GetSellingPrice() + " | " + "\t" + this.GetProfit();
         }
     }
   

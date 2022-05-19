@@ -28,94 +28,111 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.NamePrLabel = new System.Windows.Forms.Label();
+            this.AmountPrlabel = new System.Windows.Forms.Label();
+            this.BuyPricePrlabe = new System.Windows.Forms.Label();
+            this.NameProduxtTextBox = new System.Windows.Forms.TextBox();
+            this.AmountProducttextBox = new System.Windows.Forms.TextBox();
+            this.BuyingPriceProducttextBox = new System.Windows.Forms.TextBox();
+            this.SellPricePrlabel = new System.Windows.Forms.Label();
+            this.ProductTypecomboBox = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.TypePrlabel = new System.Windows.Forms.Label();
+            this.SellingPriceProducttextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // label1
+            // NamePrLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(37, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.NamePrLabel.AutoSize = true;
+            this.NamePrLabel.Location = new System.Drawing.Point(39, 28);
+            this.NamePrLabel.Name = "NamePrLabel";
+            this.NamePrLabel.Size = new System.Drawing.Size(99, 15);
+            this.NamePrLabel.TabIndex = 0;
+            this.NamePrLabel.Text = "Название товара";
             // 
-            // label2
+            // AmountPrlabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(38, 105);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 15);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "label2";
+            this.AmountPrlabel.AutoSize = true;
+            this.AmountPrlabel.Location = new System.Drawing.Point(38, 105);
+            this.AmountPrlabel.Name = "AmountPrlabel";
+            this.AmountPrlabel.Size = new System.Drawing.Size(72, 15);
+            this.AmountPrlabel.TabIndex = 1;
+            this.AmountPrlabel.Text = "Количество";
             // 
-            // label3
+            // BuyPricePrlabe
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(37, 194);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 15);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "label3";
+            this.BuyPricePrlabe.AutoSize = true;
+            this.BuyPricePrlabe.Location = new System.Drawing.Point(37, 175);
+            this.BuyPricePrlabe.Name = "BuyPricePrlabe";
+            this.BuyPricePrlabe.Size = new System.Drawing.Size(133, 15);
+            this.BuyPricePrlabe.TabIndex = 2;
+            this.BuyPricePrlabe.Text = "Закупочная стоимость";
             // 
-            // textBox1
+            // NameProduxtTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(39, 56);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(121, 23);
-            this.textBox1.TabIndex = 3;
+            this.NameProduxtTextBox.Location = new System.Drawing.Point(39, 56);
+            this.NameProduxtTextBox.Name = "NameProduxtTextBox";
+            this.NameProduxtTextBox.Size = new System.Drawing.Size(121, 23);
+            this.NameProduxtTextBox.TabIndex = 3;
+            this.NameProduxtTextBox.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            this.NameProduxtTextBox.Leave += new System.EventHandler(this.Form1_Leave);
             // 
-            // textBox2
+            // AmountProducttextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(38, 123);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(122, 23);
-            this.textBox2.TabIndex = 4;
+            this.AmountProducttextBox.Location = new System.Drawing.Point(38, 123);
+            this.AmountProducttextBox.Name = "AmountProducttextBox";
+            this.AmountProducttextBox.Size = new System.Drawing.Size(122, 23);
+            this.AmountProducttextBox.TabIndex = 4;
+            this.AmountProducttextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AmountProducttextBox_KeyPress);
+            this.AmountProducttextBox.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            this.AmountProducttextBox.Leave += new System.EventHandler(this.Form1_Leave);
+
             // 
-            // textBox3
+            // BuyingPriceProducttextBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(39, 212);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(121, 23);
-            this.textBox3.TabIndex = 5;
+            this.BuyingPriceProducttextBox.Location = new System.Drawing.Point(39, 203);
+            this.BuyingPriceProducttextBox.Name = "BuyingPriceProducttextBox";
+            this.BuyingPriceProducttextBox.Size = new System.Drawing.Size(121, 23);
+            this.BuyingPriceProducttextBox.TabIndex = 5;
+            this.BuyingPriceProducttextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BuyingPriceProducttextBox_KeyPress);
+            this.BuyingPriceProducttextBox.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            this.BuyingPriceProducttextBox.Leave += new System.EventHandler(this.Form1_Leave);
             // 
-            // label4
+            // SellPricePrlabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(37, 261);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 15);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "label4";
+            this.SellPricePrlabel.AutoSize = true;
+            this.SellPricePrlabel.Location = new System.Drawing.Point(38, 251);
+            this.SellPricePrlabel.Name = "SellPricePrlabel";
+            this.SellPricePrlabel.Size = new System.Drawing.Size(103, 15);
+            this.SellPricePrlabel.TabIndex = 6;
+            this.SellPricePrlabel.Text = "Цена реализации";
             // 
-            // comboBox1
+            // ProductTypecomboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(38, 353);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 7;
+            this.ProductTypecomboBox.FormattingEnabled = true;
+            this.ProductTypecomboBox.Items.AddRange(new object[] {
+            "Food",
+            "Hardware",
+            "Medical_supplie",
+            "Tool",
+            "Unknown"});
+            this.ProductTypecomboBox.Location = new System.Drawing.Point(38, 353);
+            this.ProductTypecomboBox.Name = "ProductTypecomboBox";
+            this.ProductTypecomboBox.Size = new System.Drawing.Size(121, 23);
+            this.ProductTypecomboBox.TabIndex = 7;
             // 
             // button1
             // 
+            this.button1.Enabled = false;
             this.button1.Location = new System.Drawing.Point(37, 410);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(122, 23);
             this.button1.TabIndex = 8;
-            this.button1.Text = "Add product";
+            this.button1.Text = "Добавить товар";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // button2
             // 
@@ -123,8 +140,9 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(122, 23);
             this.button2.TabIndex = 9;
-            this.button2.Text = "Clear";
+            this.button2.Text = "Очистить поле";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // richTextBox1
             // 
@@ -134,42 +152,46 @@
             this.richTextBox1.TabIndex = 10;
             this.richTextBox1.Text = "";
             // 
-            // label5
+            // TypePrlabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(39, 321);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(38, 15);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "label5";
+            this.TypePrlabel.AutoSize = true;
+            this.TypePrlabel.Location = new System.Drawing.Point(37, 321);
+            this.TypePrlabel.Name = "TypePrlabel";
+            this.TypePrlabel.Size = new System.Drawing.Size(67, 15);
+            this.TypePrlabel.TabIndex = 11;
+            this.TypePrlabel.Text = "Тип товара";
             // 
-            // textBox4
+            // SellingPriceProducttextBox
             // 
-            this.textBox4.Location = new System.Drawing.Point(37, 295);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(122, 23);
-            this.textBox4.TabIndex = 12;
+            this.SellingPriceProducttextBox.Location = new System.Drawing.Point(37, 282);
+            this.SellingPriceProducttextBox.Name = "SellingPriceProducttextBox";
+            this.SellingPriceProducttextBox.Size = new System.Drawing.Size(122, 23);
+            this.SellingPriceProducttextBox.TabIndex = 12;
+            this.SellingPriceProducttextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SellingPriceProducttextBox_KeyPress);
+            this.SellingPriceProducttextBox.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            this.SellingPriceProducttextBox.Leave += new System.EventHandler(this.Form1_Leave);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(999, 520);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.SellingPriceProducttextBox);
+            this.Controls.Add(this.TypePrlabel);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.ProductTypecomboBox);
+            this.Controls.Add(this.SellPricePrlabel);
+            this.Controls.Add(this.BuyingPriceProducttextBox);
+            this.Controls.Add(this.AmountProducttextBox);
+            this.Controls.Add(this.NameProduxtTextBox);
+            this.Controls.Add(this.BuyPricePrlabe);
+            this.Controls.Add(this.AmountPrlabel);
+            this.Controls.Add(this.NamePrLabel);
             this.Name = "Form1";
             this.Text = "Storage Control";
+            this.Leave += new System.EventHandler(this.Form1_Leave);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -177,18 +199,18 @@
 
         #endregion
 
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private Label label4;
-        private ComboBox comboBox1;
+        private Label NamePrLabel;
+        private Label AmountPrlabel;
+        private Label BuyPricePrlabe;
+        private TextBox NameProduxtTextBox;
+        private TextBox AmountProducttextBox;
+        private TextBox BuyingPriceProducttextBox;
+        private Label SellPricePrlabel;
+        private ComboBox ProductTypecomboBox;
         private Button button1;
         private Button button2;
         private RichTextBox richTextBox1;
-        private Label label5;
-        private TextBox textBox4;
+        private Label TypePrlabel;
+        private TextBox SellingPriceProducttextBox;
     }
 }

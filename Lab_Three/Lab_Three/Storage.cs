@@ -11,7 +11,7 @@ namespace Lab_Three
         private List<Product> _products;
 
 
-        Storage()
+        public Storage()
         {
             _products = new List<Product>();
         }
@@ -20,49 +20,17 @@ namespace Lab_Three
         {
             return _products.Count;
         }
-        public  int GetProductCount(Product product)
+        public void AddProduct(Product product)
         {
-            int count = 0;
-            foreach (Product p in _products)
-            {
-                if (p.GetProductCode() == product.GetProductCode())
-                {
-                    count++;
-                }
-            }
-            return count;
+            _products.Add(product);
         }
-        public  double GetProductBuyingPrice(Product product)
+        public Product GetProduct(int index)
         {
-            double summ = 0;
-            foreach (Product p in _products)
+            if (index > 0 & index < _products.Count())
             {
-                if (p.GetProductCode() == product.GetProductCode())
-                {
-                    summ += p.GetBuyingPrice();
-                }
+                return _products[index];
             }
-            return summ;
-
-        }
-
-        public  double GetProductSellingPrice(Product product)
-        {
-            double summ = 0;
-            foreach (Product p in _products)
-            {
-                if (p.GetProductCode() == product.GetProductCode())
-                {
-                    summ += p.GetSellingPrice();
-                }
-            }
-            return summ;
-
-        }
-
-        public double GetProfit(Product product)
-        {
-            return this.GetProductSellingPrice(product) - this.GetProductBuyingPrice(product); 
+            return null;
         }
 
     }
