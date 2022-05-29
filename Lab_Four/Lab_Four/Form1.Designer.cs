@@ -44,11 +44,15 @@
             // 
             // textBox1
             // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.textBox1.Location = new System.Drawing.Point(12, 314);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(776, 96);
             this.textBox1.TabIndex = 0;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // panel1
             // 
@@ -66,11 +70,12 @@
             this.auto_input.Location = new System.Drawing.Point(14, 37);
             this.auto_input.Name = "auto_input";
             this.auto_input.Size = new System.Drawing.Size(145, 19);
-            this.auto_input.TabIndex = 1;
+            this.auto_input.TabIndex = 0;
             this.auto_input.TabStop = true;
             this.auto_input.Text = "Автоматический ввод";
             this.auto_input.UseVisualStyleBackColor = true;
             this.auto_input.CheckedChanged += new System.EventHandler(this.auto_input_CheckedChanged);
+            this.auto_input.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.auto_input_KeyPress);
             // 
             // manual_input
             // 
@@ -78,11 +83,12 @@
             this.manual_input.Location = new System.Drawing.Point(14, 12);
             this.manual_input.Name = "manual_input";
             this.manual_input.Size = new System.Drawing.Size(94, 19);
-            this.manual_input.TabIndex = 0;
+            this.manual_input.TabIndex = 1;
             this.manual_input.TabStop = true;
             this.manual_input.Text = "Ручной ввод";
             this.manual_input.UseVisualStyleBackColor = true;
             this.manual_input.CheckedChanged += new System.EventHandler(this.manual_input_CheckedChanged);
+            this.manual_input.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.manual_input_KeyPress);
             // 
             // inputType
             // 
@@ -97,7 +103,7 @@
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(11, 41);
             this.numericUpDown1.Maximum = new decimal(new int[] {
-            32,
+            16,
             0,
             0,
             0});
@@ -105,7 +111,7 @@
             this.numericUpDown1.Size = new System.Drawing.Size(144, 23);
             this.numericUpDown1.TabIndex = 3;
             this.numericUpDown1.Value = new decimal(new int[] {
-            4,
+            16,
             0,
             0,
             0});
@@ -121,6 +127,7 @@
             this.calculatingButton.TabIndex = 4;
             this.calculatingButton.Text = "Вычислить";
             this.calculatingButton.UseVisualStyleBackColor = false;
+            this.calculatingButton.Click += new System.EventHandler(this.calculatingButton_Click);
             // 
             // ArrayLength
             // 
@@ -133,13 +140,17 @@
             // 
             // dataGridView1
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dataGridView1.GridColor = System.Drawing.SystemColors.ButtonFace;
-            this.dataGridView1.Location = new System.Drawing.Point(11, 229);
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 177);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(776, 79);
-            this.dataGridView1.TabIndex = 6;
+            this.dataGridView1.RowHeadersWidth = 10;
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridView1.Size = new System.Drawing.Size(776, 50);
+            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView1_EditingControlShowing);
             // 
             // Form1
             // 
