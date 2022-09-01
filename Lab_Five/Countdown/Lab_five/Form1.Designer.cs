@@ -62,15 +62,26 @@
             // 
             // imagesBox
             // 
+            this.imagesBox.Image = global::Lab_five.Properties.Resources.Birzhevoy;
             this.imagesBox.Location = new System.Drawing.Point(12, 12);
             this.imagesBox.Name = "imagesBox";
             this.imagesBox.Size = new System.Drawing.Size(480, 229);
+            this.imagesBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imagesBox.TabIndex = 3;
             this.imagesBox.TabStop = false;
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "А. Невского",
+            "Биржевой",
+            "Дворцовый",
+            "Эрмитажный",
+            "Большеохтинский",
+            "Литейный",
+            "Троицкий",
+            "Володарский"});
             this.comboBox1.Location = new System.Drawing.Point(12, 247);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(280, 23);

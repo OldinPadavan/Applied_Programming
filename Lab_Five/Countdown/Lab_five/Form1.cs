@@ -6,22 +6,18 @@ namespace Lab_five
     {
         private System.Windows.Forms.Timer timer;
         TimeSpan Countdown_time = TimeSpan.FromMinutes(3);
-        private string[] allFiles = Directory.GetFiles(@"G:\Учеба второй курс\C# projects\Lab_Five\images");
-        private List<string> imagesName = new List<string>();
+
         public GameForm()
         {
             InitializeComponent();
-            foreach (string name in allFiles)
-            {
-                imagesName.Add(System.IO.Path.GetFileNameWithoutExtension(name));
-            }
-
-
+            comboBox1.Enabled = false;
         }
 
         private void StartButton_Click(object sender, EventArgs e)
         {
             timer.Start();
+            comboBox1.Enabled=true;
+           
         }
 
         private void GameForm_Load(object sender, EventArgs e)
@@ -51,6 +47,11 @@ namespace Lab_five
         {
             timer.Stop();
             Application.DoEvents();
+        }
+
+        void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedState = comboBox1.SelectedItem.ToString();
         }
     }
 }
