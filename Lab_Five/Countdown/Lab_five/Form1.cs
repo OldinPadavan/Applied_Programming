@@ -11,6 +11,7 @@ namespace Lab_five
         {
             InitializeComponent();
             comboBox1.Enabled = false;
+           
         }
 
         private void StartButton_Click(object sender, EventArgs e)
@@ -19,6 +20,7 @@ namespace Lab_five
             comboBox1.Enabled=true;
            
         }
+
 
         private void GameForm_Load(object sender, EventArgs e)
         {
@@ -52,6 +54,18 @@ namespace Lab_five
         void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedState = comboBox1.SelectedItem.ToString();
+            
+            
+           
+            
         }
+
+        
+
+        private void showStatus()
+        {
+            
+        }
+
     }
 }

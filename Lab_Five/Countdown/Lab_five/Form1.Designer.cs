@@ -89,15 +89,15 @@
             // 
             // statusBox
             // 
-            this.statusBox.Location = new System.Drawing.Point(331, 247);
+            this.statusBox.Location = new System.Drawing.Point(298, 247);
             this.statusBox.Multiline = true;
             this.statusBox.Name = "statusBox";
-            this.statusBox.Size = new System.Drawing.Size(161, 37);
+            this.statusBox.Size = new System.Drawing.Size(220, 92);
             this.statusBox.TabIndex = 5;
             // 
             // resultBox
             // 
-            this.resultBox.Location = new System.Drawing.Point(524, 269);
+            this.resultBox.Location = new System.Drawing.Point(524, 247);
             this.resultBox.Multiline = true;
             this.resultBox.Name = "resultBox";
             this.resultBox.Size = new System.Drawing.Size(264, 169);
