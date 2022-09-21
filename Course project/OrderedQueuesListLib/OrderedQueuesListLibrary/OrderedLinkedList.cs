@@ -4,18 +4,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static OrderedQueuesListLibrary.Queue<T>;
+
+
 
 namespace OrderedQueuesListLibrary
 {
-    internal class OrderedLinkedList : IEnumerable<Queue>
+    internal class OrderedLinkedList : IEnumerable<Queue<Type>>
     {
         Element head; // головной/первый элемент
         Element tail; // последний/хвостовой элемент
         int count;  // количество элементов в списке
 
         // добавление элемента
-        public void Add(Queue data)
+        public void Add(Queue<Type> data)
         {
             Element node = new Element(data);
 
@@ -28,7 +29,7 @@ namespace OrderedQueuesListLibrary
             count++;
         }
         // удаление элемента
-        public bool Remove(Queue data)
+        public bool Remove(Queue<Type> data)
         {
             Element current = head;
             Element previous = null;
@@ -78,7 +79,7 @@ namespace OrderedQueuesListLibrary
             count = 0;
         }
         // содержит ли список элемент
-        public bool Contains(Queue data)
+        public bool Contains(Queue<Type> data)
         {
             Element current = head;
             while (current != null)
@@ -90,7 +91,7 @@ namespace OrderedQueuesListLibrary
             return false;
         }
         // добвление в начало
-        public void AppendFirst(Queue data)
+        public void AppendFirst(Queue<Type> data)
         {
             Element node = new Element(data);
             node.nextElement = head;
@@ -105,7 +106,7 @@ namespace OrderedQueuesListLibrary
             return ((IEnumerable)this).GetEnumerator();
         }
 
-        IEnumerator<Queue> IEnumerable<Queue>.GetEnumerator()
+        IEnumerator<Queue<Type>> IEnumerable<Queue<Type>>.GetEnumerator()
         {
             Element current = head;
             while (current != null)
