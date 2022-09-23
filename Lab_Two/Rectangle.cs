@@ -4,14 +4,14 @@ using System.Text;
 
 namespace Lab_Two
 {
-    class Rectangle
+    class Rectangle // базовый класс
     {
 /*<<<<<<< HEAD
 =======*/
         private double length;
         private double width;
 
-        public Rectangle()
+        public Rectangle() // конструктор по умолчанию 
         {
             length = 5.0;
             width = 4.0;
@@ -23,7 +23,7 @@ namespace Lab_Two
             this.width = width;
         }
 
-        public double getLength()
+        public double getLength() // геттеры
         {
             return this.length;
         }
@@ -33,7 +33,7 @@ namespace Lab_Two
             return this.width;
         }
 
-        public void setLength(double length)
+        public void setLength(double length) // сеттеры
         {
             this.length = length;
         }
@@ -43,17 +43,17 @@ namespace Lab_Two
             this.width = width;
         }
 
-        public override string ToString()
+        public override string ToString() // вывод в консоль
         {
             return "It is Rectangle object, length = " + this.length + " , width = " + this.width;
         }
 
-        public virtual double getArea()
+        public virtual double getArea() // расчет площади
         {
             return this.length * this.width;
         }
 
-        public virtual double getPerimeter()
+        public virtual double getPerimeter() //расчет периметра
         {
             return 2 * (this.length + this.width);
         }

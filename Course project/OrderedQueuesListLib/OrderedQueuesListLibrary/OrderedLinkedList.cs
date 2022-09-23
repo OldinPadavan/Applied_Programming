@@ -69,8 +69,29 @@ namespace OrderedQueuesListLibrary
             return false;
         }
 
+        public void Print()
+        {
+            if (IsEmpty)
+            {
+                Element current = head;
+                while (current != null)
+                {
+                    foreach(Type element in current.element)
+                    {
+                        Console.WriteLine(element.ToString);
+                    }
+                    current = current.nextElement;
+                }
+            }
+            else
+            {
+                Console.WriteLine("List is empty");
+            }
+        }
+
         public int Count { get { return count; } }
         public bool IsEmpty { get { return count == 0; } }
+
         // очистка списка
         public void Clear()
         {
@@ -91,15 +112,7 @@ namespace OrderedQueuesListLibrary
             return false;
         }
         // добвление в начало
-        public void AppendFirst(Queue<Type> data)
-        {
-            Element node = new Element(data);
-            node.nextElement = head;
-            head = node;
-            if (count == 0)
-                tail = head;
-            count++;
-        }
+
         // реализация интерфейса IEnumerable
         IEnumerator IEnumerable.GetEnumerator()
         {

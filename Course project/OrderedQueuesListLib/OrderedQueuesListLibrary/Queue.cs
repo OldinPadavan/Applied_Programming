@@ -12,7 +12,7 @@ namespace OrderedQueuesListLibrary
         Node<T> head;
         Node<T> tail;
         int count;
-        public void Enqueue(T data)
+        public void Enqueue(T data) // добавление в очередь
         {
             Node<T> node = new Node<T>(data);
             Node<T> tempNode = tail;
@@ -26,7 +26,7 @@ namespace OrderedQueuesListLibrary
             }
             count++;
         }
-        public T Dequeue()
+        public T Dequeue() //удаление из очереди
         {
             if (count == 0)
             {

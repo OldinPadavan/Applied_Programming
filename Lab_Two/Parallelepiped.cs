@@ -8,7 +8,7 @@ namespace Lab_Two
     {
         private double height;
 
-        public Parallelepiped() : base()
+        public Parallelepiped() : base() // конструтор по умолчанию, с вызовом конструктора базового класса и инициализацией нового поля
         {
             height = 7.0;
         }
@@ -18,7 +18,7 @@ namespace Lab_Two
             this.height = height;
         }
 
-        public double Height
+        public double Height //геттер и сеттер в более компактном виде
         {
             get { return height; }
             set { height = value;}
@@ -29,7 +29,7 @@ namespace Lab_Two
             return "It is Parallelepiped object, length = " + this.getLength() + " , width = " + this.getWidth() + ", height = " + this.Height;
         }
 
-        public override double getArea()
+        public override double getArea() // переопределенный метод getArea()
         {
             return 2 * base.getArea() + (base.getPerimeter() * this.height);
         }

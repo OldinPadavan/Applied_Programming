@@ -43,9 +43,17 @@ namespace Lab_One
 
         public static void showMenu()
         {
-            Console.WriteLine("Выберите тип операции, и введите номер операции:");
+            Console.WriteLine("Выберите тип операции, введите номер операции:");
             Console.WriteLine(" Для \"Нахождения площади круга\": 1\n Для \"Нахождения длины окружности нажмите\": 2 ");
-            int commandNumber = Convert.ToInt32(Console.ReadLine());
+            int commandNumber;
+            try
+            {
+                 commandNumber = Convert.ToInt32(Console.ReadLine());
+            } catch
+            {
+                Console.WriteLine("Неккоректное значение");
+                commandNumber = 0;
+            }
             switch (commandNumber)
             {
                 case 1:
@@ -53,6 +61,8 @@ namespace Lab_One
                     break;
                 case 2:
                     calculatOfCircleLenght();
+                    break;
+                default: Console.WriteLine("Неизвестная команда");
                     break;
             }
 
