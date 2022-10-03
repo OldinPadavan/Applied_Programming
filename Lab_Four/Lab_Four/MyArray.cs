@@ -26,17 +26,16 @@ namespace Lab_Four
             /*Formula of calculation is: Y = x(1) * x(2) * x(3) * x(4) + x(5) * x(6) * x(7) * x(8) + .... + x(n) * (n + 1)  */
             double sum = 0;
             double multiPart = 1;
-            for (int i = 0; i < _Array.Length; i++)
+            for (int i = 0, x = 1; x <= _Array.Length; i++, x++)
             {
-                if (i % 3 == 0)
+                multiPart *= _Array[i];
+                if (x % 4 == 0)
                 {
                     sum += multiPart;
                     multiPart = 1;
                 }
-                multiPart *= _Array[i];
-                
             }
-            if (multiPart > 1 & multiPart != 1)
+            if (multiPart > 1)
             {
                 sum += multiPart;
             }
