@@ -62,7 +62,6 @@
             // 
             // imagesBox
             // 
-            this.imagesBox.Image = global::Lab_five.Properties.Resources.Birzhevoy;
             this.imagesBox.Location = new System.Drawing.Point(12, 12);
             this.imagesBox.Name = "imagesBox";
             this.imagesBox.Size = new System.Drawing.Size(480, 229);
