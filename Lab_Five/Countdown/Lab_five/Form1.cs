@@ -7,6 +7,7 @@ namespace Lab_five
         private System.Windows.Forms.Timer timer;
         private List<int> showedImages = new List<int>();
         private List<int> answersList = new List<int>();
+        private Random random = new Random();
         private Dictionary<int, string> ImagesDictionary = new Dictionary<int, string>()
         {
             {1, "А. Невского"},
@@ -44,50 +45,61 @@ namespace Lab_five
         private void StartButton_Click(object sender, EventArgs e)
         {
             timer.Start();
+            StartButton.Enabled = false;
             comboBox1.Enabled=true;
-            
+            ShowImages();
            
+
+
+
         }
         private void ShowImages()
         {
-            if(showedImages.Count() == ImagesDictionary.Count())
-            {
-                timer.Stop();
-                ShowResult();
-            }
-            
             int randomNumber = GetRandomNumber();
             this.imagesBox.Image = Image.FromFile(ImagesFileList[randomNumber]);
             CheckingResul(randomNumber);
+            /*while (Countdown_time.TotalSeconds > 0)
+            {
+                if (showedImages.Count() == ImagesDictionary.Count())
+                {
+                    timer.Stop();
+                    ShowResult();
+                }
 
-            
+                int randomNumber = GetRandomNumber();
+                this.imagesBox.Image = Image.FromFile(ImagesFileList[randomNumber]);
+                CheckingResul(randomNumber);
+            }*/
+
+
         }
 
         private int GetRandomNumber()
         {
-            int randomNumber = new Random().Next(1, 9);
-            if(showedImages.Contains(randomNumber))
+            int randomNumber = random.Next(0, ImagesDictionary.Count());
+            while (showedImages.Contains(randomNumber))
             {
-                return GetRandomNumber();
-            } else
-            {
-                return randomNumber;
+                randomNumber = random.Next(0, ImagesDictionary.Count());
             }
+            return randomNumber;
         }
 
         private void CheckingResul(int imagesId)
         {
-            string UserAnswer = comboBox1.SelectedItem.ToString();
-            if (UserAnswer.Equals(ImagesDictionary[imagesId]))
+            
+            if (this.comboBox1.SelectedItem != null)
             {
-                answersList.Add(1);
-                statusBox.Text = "Правильно!";
-
-            }
-            else
-            {
-                answersList.Add(0);
-                statusBox.Text = "Не правильно!";
+                
+                if (this.comboBox1.GetItemText(this.comboBox1.SelectedItem).Equals(ImagesDictionary[imagesId]))
+                {
+                    answersList.Add(1);
+                    statusBox.Text = "Правильно!";
+                }
+                else
+                {
+                    answersList.Add(0);
+                    statusBox.Text = "Не правильно!";
+                }
             }
             showedImages.Add(imagesId);
 
@@ -112,7 +124,6 @@ namespace Lab_five
         {
             if (Countdown_time.TotalSeconds >= 0)
             {
-                ShowImages();
                 CountDown.Text = Countdown_time.ToString("mm\\:ss");
                 Countdown_time = Countdown_time.Subtract(TimeSpan.FromSeconds(1));
             } else
@@ -129,17 +140,6 @@ namespace Lab_five
             timer.Stop();
             Application.DoEvents();
         }
-
-        void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string selectedState = comboBox1.SelectedItem.ToString();
-            
-            
-           
-            
-        }
-
-        
 
         private void showStatus()
         {
