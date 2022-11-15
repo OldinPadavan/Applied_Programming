@@ -1,0 +1,3 @@
+System.StackOverflowException
+  HResult=0x800703E9
+  Message=Exception_WasThrown

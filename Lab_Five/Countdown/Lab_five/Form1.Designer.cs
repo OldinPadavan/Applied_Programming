@@ -34,7 +34,6 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.statusBox = new System.Windows.Forms.TextBox();
             this.resultBox = new System.Windows.Forms.TextBox();
-            this.submitAnswer = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.imagesBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -103,22 +102,11 @@
             this.resultBox.Size = new System.Drawing.Size(264, 169);
             this.resultBox.TabIndex = 6;
             // 
-            // submitAnswer
-            // 
-            this.submitAnswer.Location = new System.Drawing.Point(15, 276);
-            this.submitAnswer.Name = "submitAnswer";
-            this.submitAnswer.Size = new System.Drawing.Size(277, 40);
-            this.submitAnswer.TabIndex = 7;
-            this.submitAnswer.Text = "button1";
-            this.submitAnswer.UseVisualStyleBackColor = true;
-            this.submitAnswer.Click += new System.EventHandler(this.Answerbutton_Click);
-            // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.submitAnswer);
             this.Controls.Add(this.resultBox);
             this.Controls.Add(this.statusBox);
             this.Controls.Add(this.comboBox1);
@@ -145,6 +133,5 @@
         private ComboBox comboBox1;
         private TextBox statusBox;
         private TextBox resultBox;
-        private Button submitAnswer;
     }
 }

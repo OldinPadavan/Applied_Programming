@@ -11,14 +11,14 @@ namespace Lab_five
         private int CurrentImgID;
         private Dictionary<int, string> ImagesDictionary = new Dictionary<int, string>()
         {
-            {1, "А. Невского"},
-            {2, "Биржевой"},
-            {3, "Дворцовый"},
-            {4, "Эрмитажный"},
-            {5, "Большеохтинский"},
-            {6, "Литейный"},
-            {7, "Троицкий"},
-            {8, "Володарский"}
+            {0, "А. Невского"},
+            {1, "Биржевой"},
+            {2, "Дворцовый"},
+            {3, "Эрмитажный"},
+            {4, "Большеохтинский"},
+            {5, "Литейный"},
+            {6, "Троицкий"},
+            {7, "Володарский"}
 
         };
         private List<string> ImagesFileList = new List<string>()
@@ -39,7 +39,6 @@ namespace Lab_five
         {
             InitializeComponent();
             comboBox1.Enabled = false;
-            submitAnswer.Enabled = false;
             
             
 
@@ -59,13 +58,11 @@ namespace Lab_five
         }
         private void ShowImages()
         {
-            
-            while (Countdown_time.TotalSeconds > 0 || answersList.Count() < ImagesDictionary.Count)
-            {
-                CurrentImgID = GetRandomNumber();
-                this.imagesBox.Image = Image.FromFile(ImagesFileList[CurrentImgID]);
-                ChoouseAnswerAndCompare();
 
+            while(showedImages.Count < ImagesDictionary.Count || Countdown_time.TotalSeconds != 0) {
+                CurrentImgID = GetRandomNumber();
+                imagesBox.Image = Image.FromFile(ImagesFileList[CurrentImgID]);
+                ChoouseAnswerAndCompare();
             }
             ShowResult();
     
@@ -73,7 +70,14 @@ namespace Lab_five
         //need to solve problem with generation random number and accses to directoryImglist(what's different between capacity and count)
         private int GetRandomNumber()
         {
-            int GeneratedRandomNumber = random.Next()
+            int GeneratedRandomNumber = random.Next(0, 8);
+            if (showedImages.Contains(GeneratedRandomNumber))
+            {
+                GetRandomNumber();
+            }
+            showedImages.Add(GeneratedRandomNumber);
+            return GeneratedRandomNumber;
+            
         }
 
         private void ChoouseAnswerAndCompare()
@@ -126,6 +130,7 @@ namespace Lab_five
             } else
             {
                 timer.Stop();
+                ShowResult();
             }
 
         }
@@ -143,10 +148,5 @@ namespace Lab_five
             
         }
 
-        private void Answerbutton_Click(object sender, EventArgs e)
-        {
-
-
-        }
     }
 }
