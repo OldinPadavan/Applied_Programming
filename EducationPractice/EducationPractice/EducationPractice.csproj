@@ -6,6 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	 <GenerateDocumentationFile>true</GenerateDocumentationFile>
+	 <DocumentationFile>G:\Учеба второй курс\C# projects\EducationPractice\EducationPractice\bin\Debug\net6.0\EducationPractice.xml</DocumentationFile>
   </PropertyGroup>
 
 </Project>

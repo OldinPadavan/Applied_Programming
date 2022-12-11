@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
+//Объектная реализация упорядоченного списка очередей
 
 namespace OrderedQueuesListLibrary
 {
@@ -15,6 +15,13 @@ namespace OrderedQueuesListLibrary
         Element tail; // последний/хвостовой элемент
         int count;  // количество элементов в списке
 
+
+        public OrderedLinkedList()
+        {
+            head = null;
+            tail = null;
+            count = 0;
+        }
         // добавление элемента
         public void Add(Queue<Type> data)
         {

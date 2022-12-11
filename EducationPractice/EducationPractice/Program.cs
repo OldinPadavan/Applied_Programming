@@ -11,7 +11,7 @@ namespace EducationPractice
         /// <value>
         /// variable declaration for input 
         /// </value>
-        public int input;
+        public int Input;
 
         /// <summary>
         /// main method
@@ -19,19 +19,34 @@ namespace EducationPractice
         public static void Main()
         {
             int x = 5;
-            Program program= new Program();
-            program.input = Convert.ToInt32(Console.ReadLine());
+            Program Program= new Program();
+            Program.Input = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Hello World!");
             //foreach (char ch in "Hello World!")
             //{
             //    Console.WriteLine(ch);
             //}
 
-            Console.WriteLine(program.Sum(x));
+            Console.WriteLine(Program.Sum(x));
             Console.WriteLine(x);
             try
             {
-                Console.WriteLine(x / program.input);
+                if (Program.Input == 0)
+                {
+                    Console.WriteLine("input var = 0");
+                }
+                else
+                {
+                    if (Program.Input % 2 == 0)
+                    {
+                        Console.WriteLine("even");
+                    } else
+                    {
+                        Console.WriteLine("odd");
+                    }
+                }
+
+                Console.WriteLine(x / Program.Input);
             } catch(DivideByZeroException exception)
             {
                 Console.WriteLine("I tried to divided first number to zero " + " " + exception.Message);
@@ -67,6 +82,14 @@ namespace EducationPractice
         {
             Zuu ( );
         }
+        
+
+        //N = 21
+        //CA = 4
+        //Lloop = 0
+        //LIF = 2
+        //Lmod = 3
+        //CL = 4/21 = 0.19 (CA/N)
         
 
     }
