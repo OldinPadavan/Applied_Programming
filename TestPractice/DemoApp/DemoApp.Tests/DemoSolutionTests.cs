@@ -22,12 +22,12 @@ namespace DemoApp.Tests
         }
 
         [Test]
-        public void getSqureTest()
+        public void getSqaureTest()
         {
             //Assign
             int value = 64;
             //Act
-            int squre = testSolution.getSqure(4);
+            int squre = testSolution.getSquare(4);
             //Assert
             Assert.That(squre, Is.EqualTo(value));
         }

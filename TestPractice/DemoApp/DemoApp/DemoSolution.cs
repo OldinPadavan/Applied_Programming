@@ -8,7 +8,7 @@
     {
         return a + b;
     }
-    public int getSqure(int a)
+    public int getSquare(int a)
     {
         return a * a;
     }
