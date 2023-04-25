@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OrderedQueuesListLibrary
 {
-    internal class Queue <T> : IEnumerable<T> where T : class
+    public class Queue <T> : IEnumerable<T> where T : class
     {
         Node<T> head;
         Node<T> tail;
@@ -96,7 +96,7 @@ namespace OrderedQueuesListLibrary
             }
         }
 
-        internal class Node <T>
+        class Node <T>
         {
             public T Data { get; set; }
             public Node<T> Next { get; set; }
@@ -105,7 +105,12 @@ namespace OrderedQueuesListLibrary
             {
                 Data = data;
             }
-            
+
+            public override string ToString ( )
+            {
+                return Data.ToString();
+            }
+
         }
     }
 }

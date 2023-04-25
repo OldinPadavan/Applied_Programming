@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace OrderedQueuesListLibrary
 {
-    internal class OrderedLinkedList : IEnumerable<Queue<Type>>
+    public class OrderedLinkedList : IEnumerable<Queue<Type>>
     {
         Element head; // головной/первый элемент
         Element tail; // последний/хвостовой элемент
-        int count;  // количество элементов в списке
+        static int count;  // количество элементов в списке
 
 
         public OrderedLinkedList()
@@ -23,16 +23,25 @@ namespace OrderedQueuesListLibrary
             count = 0;
         }
         // добавление элемента
-        public void Add(Queue<Type> data)
+        public void Add(Queue<Type> data) // поиск места вставки(сортировка на осонове длинны очереди) и вставка нового элемента
         {
-            Element node = new Element(data);
+            Element NewNode = new Element(data);
+            Element Previous = null;
+            Element Current = head;
 
-            if (head == null)
-                head = node;
-            else
-                tail.nextElement = node;
-            tail = node;
-
+            while (Current != null && data.Count > Current.element.Count)
+            {
+                Previous = Current;
+                Current = Current.nextElement;
+            }
+            if (Previous == null)
+            {
+                head = NewNode;
+            } else
+            {
+                Previous.nextElement = NewNode;
+            }
+            NewNode.nextElement = Current;
             count++;
         }
         // удаление элемента
@@ -78,7 +87,7 @@ namespace OrderedQueuesListLibrary
 
         public void Print()
         {
-            if (IsEmpty)
+            if (!IsEmpty)
             {
                 Element current = head;
                 while (current != null)
@@ -96,7 +105,7 @@ namespace OrderedQueuesListLibrary
             }
         }
 
-        public int Count { get { return count; } }
+        public static int Count { get { return count; } }
         public bool IsEmpty { get { return count == 0; } }
 
         // очистка списка
@@ -135,14 +144,22 @@ namespace OrderedQueuesListLibrary
                 current = current.nextElement;
             }
         }
-        internal class Element
+        class Element
         {
             public Queue<Type> element { get; set; }
             public Element nextElement { get; set; }
+            private int ElementId;
 
             public Element (Queue<Type> element)
             {
                 this.element = element;
+                this.ElementId = Count;
+               
+            }
+
+            public override string ToString ( )
+            {
+                return "Номер очереди = " + ElementId + ", количество элементов в очереди: " + element.Count;
             }
 
         }
