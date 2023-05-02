@@ -12,6 +12,14 @@ namespace OrderedQueuesListLibrary
         Node<T> head;
         Node<T> tail;
         int count;
+
+
+        public Queue()
+        {
+            head = null;
+            tail = null;
+            count = 0;
+        }
         public void Enqueue(T data) // добавление в очередь
         {
             Node<T> node = new Node<T>(data);
