@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OrderedQueuesListLibrary.Queue;
 using System;
 
 namespace OrderedQueuesListLibrary.Tests
@@ -12,13 +13,18 @@ namespace OrderedQueuesListLibrary.Tests
 
         }
     }
+    [TestClass]
     public class QueueTests
     {
-        private Queue<string> TestQueue;
+        private 
 
         [TestInitialize]
         public void TestInitialize()
         {
+            Debug.WriteLine("Queue object inizialize");
+            TestQueue = new OrderedQueuesListLibrary.Queue<string>();
+           
+
 
         }
 
