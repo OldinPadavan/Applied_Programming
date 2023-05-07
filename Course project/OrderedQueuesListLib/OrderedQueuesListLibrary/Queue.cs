@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace OrderedQueuesListLibrary
 {
-    public class Queue <T> : IEnumerable<T> where T : class
+    public class Queue <K> : IEnumerable<K> where K : class
     {
-        Node<T> head;
-        Node<T> tail;
+        Node<K> head;
+        Node<K> tail;
         int count;
 
 
@@ -20,10 +20,10 @@ namespace OrderedQueuesListLibrary
             tail = null;
             count = 0;
         }
-        public void Enqueue(T data) // добавление в очередь
+        public void Enqueue(K data) // добавление в очередь
         {
-            Node<T> node = new Node<T>(data);
-            Node<T> tempNode = tail;
+            Node<K> node = new Node<K>(data);
+            Node<K> tempNode = tail;
             tail = node;
             if (count == 0)
             {
@@ -34,7 +34,7 @@ namespace OrderedQueuesListLibrary
             }
             count++;
         }
-        public T Dequeue() //удаление из очереди
+        public K Dequeue() //удаление из очереди
         {
             if (count == 0)
             {
@@ -53,7 +53,7 @@ namespace OrderedQueuesListLibrary
             count = 0;
         }
 
-        public T First
+        public K First
         {
             get
             {
@@ -66,7 +66,7 @@ namespace OrderedQueuesListLibrary
                 }
             }
         }
-        public T Last
+        public K Last
         {
             get
             {
@@ -101,9 +101,9 @@ namespace OrderedQueuesListLibrary
             return ((IEnumerable)this).GetEnumerator();
         }
 
-        IEnumerator<T> IEnumerable<T>.GetEnumerator()
+        IEnumerator<K> IEnumerable<K>.GetEnumerator()
         {
-            Node<T> current = head;
+            Node<K> current = head;
             while (current != null)
             {
                 yield return current.Data;

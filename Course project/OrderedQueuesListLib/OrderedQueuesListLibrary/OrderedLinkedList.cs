@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace OrderedQueuesListLibrary
 {
-    public class OrderedLinkedList : IEnumerable<Queue<Type>>
+    public class OrderedLinkedList <K> : IEnumerable<K> where K : class
     {
         Element head; // головной/первый элемент
         Element tail; // последний/хвостовой элемент
@@ -23,7 +23,7 @@ namespace OrderedQueuesListLibrary
             count = 0;
         }
         // добавление элемента
-        public void Add(Queue<Type> data) // поиск места вставки(сортировка на осонове длинны очереди) и вставка нового элемента
+        public void Add(Queue<K> data) // поиск места вставки(сортировка на осонове длинны очереди) и вставка нового элемента
         {
             Element NewNode = new Element(data);
             Element Previous = null;
@@ -45,7 +45,7 @@ namespace OrderedQueuesListLibrary
             count++;
         }
         // удаление элемента
-        public bool Remove(Queue<Type> data)
+        public bool Remove(Queue<K> data)
         {
             Element current = head;
             Element previous = null;
@@ -92,7 +92,7 @@ namespace OrderedQueuesListLibrary
                 Element current = head;
                 while (current != null)
                 {
-                    foreach(Type element in current.element)
+                    foreach( K element in current.element)
                     {
                         Console.WriteLine(element.ToString);
                     }
@@ -116,7 +116,7 @@ namespace OrderedQueuesListLibrary
             count = 0;
         }
         // содержит ли список элемент
-        public bool Contains(Queue<Type> data)
+        public bool Contains(Queue<K> data)
         {
             Element current = head;
             while (current != null)
@@ -135,7 +135,7 @@ namespace OrderedQueuesListLibrary
             return ((IEnumerable)this).GetEnumerator();
         }
 
-        IEnumerator<Queue<Type>> IEnumerable<Queue<Type>>.GetEnumerator()
+        IEnumerator<K> IEnumerable<K>.GetEnumerator()
         {
             Element current = head;
             while (current != null)
@@ -146,11 +146,11 @@ namespace OrderedQueuesListLibrary
         }
         class Element
         {
-            public Queue<Type> element { get; set; }
+            public Queue<K> element { get; set; }
             public Element nextElement { get; set; }
-            private int ElementId;
+            public int ElementId { get; set; }
 
-            public Element (Queue<Type> element)
+            public Element (Queue<K> element)
             {
                 this.element = element;
                 this.ElementId = Count;
@@ -159,7 +159,7 @@ namespace OrderedQueuesListLibrary
 
             public override string ToString ( )
             {
-                return "Номер очереди = " + ElementId + ", количество элементов в очереди: " + element.Count;
+                return "Номер очереди = " + this.ElementId + ", количество элементов в очереди: " + element.Count;
             }
 
         }
