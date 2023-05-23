@@ -11,7 +11,7 @@ using System.Xml.Linq;
 
 namespace OrderedQueuesListLibrary
 {
-    public class OrderedLinkedList<T>
+    public class OrderedLinkedList<T> : IEnumerable<OrderedQueuesListLibrary.Queue<T>>
     {
         private Element head; // головной/первый элемент
         private Element tail; // последний/хвостовой элемент
@@ -130,9 +130,24 @@ namespace OrderedQueuesListLibrary
             }
             return false;
         }
-        // добвление в начало
 
-       class Element
+
+        IEnumerator IEnumerable.GetEnumerator ( )
+        {
+            return ((IEnumerable<T>)this).GetEnumerator();
+        }
+
+        public IEnumerator<Queue<T>> GetEnumerator ( )
+        {
+            Element current = head;
+            while (current != null)
+            {
+                yield return (Queue<T>)current.Data;
+                current = current.Next;
+            };
+        }
+
+        class Element
         {
             public Queue<T> Data { get; set; }
             public Element Next { get; set; }

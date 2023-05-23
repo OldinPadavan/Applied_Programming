@@ -57,7 +57,10 @@ namespace OrderedQueueList.Tests
             OrderedQueuesListLibrary.Queue<string> QueueOne = new OrderedQueuesListLibrary.Queue<string>();
             QueueOne.Enqueue("a");
             testList.Add(QueueOne);
-
+            foreach (OrderedQueuesListLibrary.Queue<string> queue in testList)
+            {
+                Assert.AreEqual(queue.Dequeue(), "a");
+            }
         }
 
     }
