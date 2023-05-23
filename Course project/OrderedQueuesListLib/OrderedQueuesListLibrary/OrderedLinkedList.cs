@@ -2,74 +2,77 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 //Объектная реализация упорядоченного списка очередей
 
 namespace OrderedQueuesListLibrary
 {
-    public class OrderedLinkedList <K> : IEnumerable<K> where K : class
+    public class OrderedLinkedList<T>
     {
-        Element head; // головной/первый элемент
-        Element tail; // последний/хвостовой элемент
-        static int count;  // количество элементов в списке
+        private Element head; // головной/первый элемент
+        private Element tail; // последний/хвостовой элемент
+        private static int count;  // количество элементов в списке
 
 
-        public OrderedLinkedList()
+        public OrderedLinkedList ( )
         {
             head = null;
             tail = null;
             count = 0;
         }
+
         // добавление элемента
-        public void Add(Queue<K> data) // поиск места вставки(сортировка на осонове длинны очереди) и вставка нового элемента
+        public void Add (Queue<T> data ) // поиск места вставки(сортировка на осонове длинны очереди) и вставка нового элемента
         {
             Element NewNode = new Element(data);
             Element Previous = null;
             Element Current = head;
 
-            while (Current != null && data.Count > Current.element.Count)
+            while (Current != null && data.Count > Current.Data.Count)
             {
                 Previous = Current;
-                Current = Current.nextElement;
+                Current = Current.Next;
             }
             if (Previous == null)
             {
                 head = NewNode;
             } else
             {
-                Previous.nextElement = NewNode;
+                Previous.Next = NewNode;
             }
-            NewNode.nextElement = Current;
+            NewNode.Next = Current;
             count++;
         }
         // удаление элемента
-        public bool Remove(Queue<K> data)
+        public bool Remove ( Queue<T> data )
         {
             Element current = head;
             Element previous = null;
 
             while (current != null)
             {
-                if (current.element.Equals(data))
+                if (current.Data.Equals(data))
                 {
                     // Если узел в середине или в конце
                     if (previous != null)
                     {
                         // убираем узел current, теперь previous ссылается не на current, а на current.Next
-                        previous.nextElement = current.nextElement;
+                        previous.Next = current.Next;
 
                         // Если current.Next не установлен, значит узел последний,
                         // изменяем переменную tail
-                        if (current.nextElement == null)
+                        if (current.Next == null)
                             tail = previous;
                     }
                     else
                     {
                         // если удаляется первый элемент
                         // переустанавливаем значение head
-                        head = head.nextElement;
+                        head = head.Next;
 
                         // если после удаления список пуст, сбрасываем tail
                         if (head == null)
@@ -80,23 +83,23 @@ namespace OrderedQueuesListLibrary
                 }
 
                 previous = current;
-                current = current.nextElement;
+                current = current.Next;
             }
             return false;
         }
 
-        public void Print()
+        public void Print ( )
         {
             if (!IsEmpty)
             {
                 Element current = head;
                 while (current != null)
                 {
-                    foreach( K element in current.element)
+                    foreach (T element in current.Data)
                     {
                         Console.WriteLine(element.ToString);
                     }
-                    current = current.nextElement;
+                    current = current.Next;
                 }
             }
             else
@@ -105,61 +108,47 @@ namespace OrderedQueuesListLibrary
             }
         }
 
-        public static int Count { get { return count; } }
+        public  int Count { get { return count; } }
         public bool IsEmpty { get { return count == 0; } }
 
         // очистка списка
-        public void Clear()
+        public void Clear ( )
         {
             head = null;
             tail = null;
             count = 0;
         }
         // содержит ли список элемент
-        public bool Contains(Queue<K> data)
+        public bool Contains ( Queue<T> data )
         {
             Element current = head;
             while (current != null)
             {
-                if (current.element.Equals(data))
+                if (current.Data.Equals(data))
                     return true;
-                current = current.nextElement;
+                current = current.Next;
             }
             return false;
         }
         // добвление в начало
 
-        // реализация интерфейса IEnumerable
-        IEnumerator IEnumerable.GetEnumerator()
+       class Element
         {
-            return ((IEnumerable)this).GetEnumerator();
-        }
-
-        IEnumerator<K> IEnumerable<K>.GetEnumerator()
-        {
-            Element current = head;
-            while (current != null)
-            {
-                yield return current.element;
-                current = current.nextElement;
-            }
-        }
-        class Element
-        {
-            public Queue<K> element { get; set; }
-            public Element nextElement { get; set; }
+            public Queue<T> Data { get; set; }
+            public Element Next { get; set; }
+            public Element Previous { get; set; }
             public int ElementId { get; set; }
 
-            public Element (Queue<K> element)
+            public Element (Queue<T> data)
             {
-                this.element = element;
-                this.ElementId = Count;
+                this.Data = data;
+                this.ElementId = count;
                
             }
 
             public override string ToString ( )
             {
-                return "Номер очереди = " + this.ElementId + ", количество элементов в очереди: " + element.Count;
+                return "Номер очереди = " + this.ElementId + ", количество элементов в очереди: " + Data.Count();
             }
 
         }

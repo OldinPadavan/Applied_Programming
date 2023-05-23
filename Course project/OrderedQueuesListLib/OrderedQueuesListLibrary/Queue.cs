@@ -7,23 +7,16 @@ using System.Threading.Tasks;
 
 namespace OrderedQueuesListLibrary
 {
-    public class Queue <K> : IEnumerable<K> where K : class
+    public class Queue <T> : IEnumerable<T>
     {
-        Node<K> head;
-        Node<K> tail;
+        Node<T> head;
+        Node<T> tail;
         int count;
 
-
-        public Queue()
+        public void Enqueue(T data) // добавление в очередь
         {
-            head = null;
-            tail = null;
-            count = 0;
-        }
-        public void Enqueue(K data) // добавление в очередь
-        {
-            Node<K> node = new Node<K>(data);
-            Node<K> tempNode = tail;
+            Node<T> node = new Node<T>(data);
+            Node<T> tempNode = tail;
             tail = node;
             if (count == 0)
             {
@@ -34,7 +27,7 @@ namespace OrderedQueuesListLibrary
             }
             count++;
         }
-        public K Dequeue() //удаление из очереди
+        public T Dequeue() //удаление из очереди
         {
             if (count == 0)
             {
@@ -53,7 +46,7 @@ namespace OrderedQueuesListLibrary
             count = 0;
         }
 
-        public K First
+        public T First
         {
             get
             {
@@ -66,7 +59,7 @@ namespace OrderedQueuesListLibrary
                 }
             }
         }
-        public K Last
+        public T Last
         {
             get
             {
@@ -96,14 +89,28 @@ namespace OrderedQueuesListLibrary
             }
         }
 
+        public bool Contains(T data)
+        {
+            Node<T> current = head;
+            while (current != null)
+            {
+                if (current.Data.Equals(data))
+                {
+                    return true;
+                }
+                current = current.Next;
+            }
+            return false;
+        }
+
         IEnumerator IEnumerable.GetEnumerator()
         {
             return ((IEnumerable)this).GetEnumerator();
         }
 
-        IEnumerator<K> IEnumerable<K>.GetEnumerator()
+        IEnumerator<T> IEnumerable<T>.GetEnumerator()
         {
-            Node<K> current = head;
+            Node<T> current = head;
             while (current != null)
             {
                 yield return current.Data;
