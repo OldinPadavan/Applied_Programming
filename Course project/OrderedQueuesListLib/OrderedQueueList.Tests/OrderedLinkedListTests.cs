@@ -1,4 +1,5 @@
-﻿using OrderedQueuesListLibrary;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OrderedQueuesListLibrary;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -52,15 +53,25 @@ namespace OrderedQueueList.Tests
             testList.Remove(QueueTwo);
             Assert.AreEqual(testList.Count, 1);
         }
+        [TestMethod]
         public void toString_returnStringWithCorrectSequence()
         {
             OrderedQueuesListLibrary.Queue<string> QueueOne = new OrderedQueuesListLibrary.Queue<string>();
+            OrderedQueuesListLibrary.Queue<string> QueueTwo = new OrderedQueuesListLibrary.Queue<string>();
             QueueOne.Enqueue("a");
+            QueueOne.Enqueue("b");
+            QueueOne.Enqueue("c");
             testList.Add(QueueOne);
+            String a = "";
             foreach (OrderedQueuesListLibrary.Queue<string> queue in testList)
             {
-                Assert.AreEqual(queue.Dequeue(), "a");
+                while (queue.Count > 0)
+                {
+                    a = a + queue.Dequeue();
+                }
+             
             }
+            Assert.AreEqual(a, "abc");
         }
 
     }

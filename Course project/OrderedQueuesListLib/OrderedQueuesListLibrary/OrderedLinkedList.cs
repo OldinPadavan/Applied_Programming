@@ -131,6 +131,18 @@ namespace OrderedQueuesListLibrary
             return false;
         }
 
+        public override string ToString ( )
+        {
+            string allElements = "";
+            Element current = head;
+            while (current != null)
+            {
+                allElements = allElements + current.Data.ToString;
+                
+            }
+            return allElements;
+        }
+
 
         IEnumerator IEnumerable.GetEnumerator ( )
         {
