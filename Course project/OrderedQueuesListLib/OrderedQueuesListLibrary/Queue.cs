@@ -103,6 +103,11 @@ namespace OrderedQueuesListLibrary
             return false;
         }
 
+        public override string ToString ( )
+        {
+            return new string("Количество обьектов в текущей очереди: " + count); 
+        }
+
         IEnumerator IEnumerable.GetEnumerator()
         {
             return ((IEnumerable)this).GetEnumerator();
@@ -126,11 +131,6 @@ namespace OrderedQueuesListLibrary
             public Node (T data)
             {
                 Data = data;
-            }
-
-            public override string ToString ( )
-            {
-                return Data.ToString();
             }
 
         }

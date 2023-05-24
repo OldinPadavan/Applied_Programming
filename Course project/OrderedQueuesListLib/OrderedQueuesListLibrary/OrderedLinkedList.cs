@@ -95,10 +95,7 @@ namespace OrderedQueuesListLibrary
                 Element current = head;
                 while (current != null)
                 {
-                    foreach (T element in current.Data)
-                    {
-                        Console.WriteLine(element.ToString);
-                    }
+                    Console.WriteLine(current.ToString);
                     current = current.Next;
                 }
             }
@@ -175,7 +172,7 @@ namespace OrderedQueuesListLibrary
 
             public override string ToString ( )
             {
-                return "Номер очереди = " + this.ElementId + ", количество элементов в очереди: " + Data.Count();
+                return "Номер очереди = " + ElementId + ", количество элементов в очереди: " + Data.ToString();
             }
 
         }

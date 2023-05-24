@@ -54,10 +54,9 @@ namespace OrderedQueueList.Tests
             Assert.AreEqual(testList.Count, 1);
         }
         [TestMethod]
-        public void toString_returnStringWithCorrectSequence()
+        public void return_Deque_In_Correct_Sequence()
         {
             OrderedQueuesListLibrary.Queue<string> QueueOne = new OrderedQueuesListLibrary.Queue<string>();
-            OrderedQueuesListLibrary.Queue<string> QueueTwo = new OrderedQueuesListLibrary.Queue<string>();
             QueueOne.Enqueue("a");
             QueueOne.Enqueue("b");
             QueueOne.Enqueue("c");
@@ -72,6 +71,40 @@ namespace OrderedQueueList.Tests
              
             }
             Assert.AreEqual(a, "abc");
+        }
+
+        [TestMethod]
+        public void return_Queues_In_Correct_Sequence()
+        {
+            OrderedQueuesListLibrary.Queue<string> QueueOne = new OrderedQueuesListLibrary.Queue<string>();
+            OrderedQueuesListLibrary.Queue<string> QueueTwo = new OrderedQueuesListLibrary.Queue<string>();
+
+            QueueOne.Enqueue("1");
+            QueueOne.Enqueue("2");
+            QueueOne.Enqueue("3");
+            QueueOne.Enqueue("4");
+            QueueOne.Enqueue("5");
+
+            QueueTwo.Enqueue("10");
+            QueueTwo.Enqueue("11");
+            QueueTwo.Enqueue("12");
+
+            testList.Add(QueueOne);
+            testList.Add(QueueTwo);
+
+            String a = "";
+            foreach (OrderedQueuesListLibrary.Queue<string> queue in testList)
+            {
+                while (queue.Count > 0)
+                {
+                    a = a + queue.Dequeue();
+                }
+
+            }
+            Assert.AreEqual(a, "10111212345");
+
+
+
         }
 
     }
