@@ -9,6 +9,23 @@ namespace Practice_Five
         public Form1 ( )
         {
             InitializeComponent();
+            RegistryKey currentKey = Registry.CurrentUser;
+            RegistryKey key = currentKey.OpenSubKey(@"Software\PracticeFive");
+            if (key != null)
+            {
+                Int32 a = Convert.ToInt32(key?.GetValue("FontSize"));
+                Int32 b = Convert.ToInt32(key?.GetValue("BackGroudColor"));
+                buttonChangeColor.Font = new Font(buttonChangeColor.Font.Name, a, buttonChangeColor.Font.Style);
+                buttonChangeTextSize.Font = new Font(buttonChangeTextSize.Font.Name, a, buttonChangeTextSize.Font.Style);
+                buttonChangeFormColor.Font = new Font(buttonChangeFormColor.Font.Name, a, buttonChangeFormColor.Font.Style);
+
+                buttonChangeColor.BackColor = Color.FromArgb(b);
+                buttonChangeTextSize.BackColor = Color.FromArgb(b);
+                buttonChangeFormColor.BackColor = Color.FromArgb(b);
+                key.Close();
+
+            }
+
 
 
         }
@@ -18,6 +35,7 @@ namespace Practice_Five
             buttonChangeColor.BackColor = Color.DeepSkyBlue;
             buttonChangeTextSize.BackColor = Color.DeepSkyBlue;
             buttonChangeFormColor.BackColor = Color.DeepSkyBlue;
+
         }
 
         private void buttonChangeTextSize_Click ( object sender, EventArgs e )
@@ -35,12 +53,10 @@ namespace Practice_Five
         private void Form1_FormClosing ( object sender, FormClosingEventArgs e )
         {
             RegistryKey currentUserKey = Registry.CurrentUser;
-            RegistryKey figure = currentUserKey.CreateSubKey(@"Software\Figure");
-            figure.SetValue("FontSize",buttonChangeColor.Font.Size, RegistryValueKind.DWord);
-            figure.SetValue("BackGroudColor", this.BackColor.ToArgb(), RegistryValueKind.DWord);
-            figure.Close();
-
-
+            RegistryKey key = currentUserKey.CreateSubKey(@"Software\PracticeFive");
+            key.SetValue("FontSize",buttonChangeColor.Font.Size, RegistryValueKind.DWord);
+            key.SetValue("BackGroudColor", this.BackColor.ToArgb(), RegistryValueKind.DWord);
+            key.Close();
         }
     }
 }

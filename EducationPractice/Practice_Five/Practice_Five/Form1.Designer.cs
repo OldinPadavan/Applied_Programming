@@ -29,7 +29,6 @@
         private void InitializeComponent ( )
         {
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.BackColor = Color.FromArgb(c);
             this.buttonChangeColor = new System.Windows.Forms.Button();
             this.buttonChangeTextSize = new System.Windows.Forms.Button();
             this.buttonChangeFormColor = new System.Windows.Forms.Button();
