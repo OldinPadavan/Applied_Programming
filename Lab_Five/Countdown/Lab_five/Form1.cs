@@ -9,7 +9,7 @@ namespace Lab_five
         private List<int> answersList = new List<int>();
         Random random = new Random();
         private int CurrentImgID;
-        private string Answer;
+        public EventHandler ChoosedAnswerInCombobox;
         private Dictionary<int, string> ImagesDictionary = new Dictionary<int, string>()
         {
             {0, "А. Невского"},
@@ -34,11 +34,17 @@ namespace Lab_five
             {7, "G:\\Учеба второй курс\\C# projects\\Lab_Five\\images\\Volodarskiy.jpg"}
         };
         private TimeSpan Countdown_time = TimeSpan.FromMinutes(3);
+        private List<int> KeysList;
+
+
+
 
 
         public GameForm ( )
         {
             InitializeComponent();
+            var ShuffleDic = (Dictionary<int, string>)ImagesFileList.OrderBy(x => random.Next());
+            KeysList = ShuffleDic.Keys.ToList();
             comboBox1.Enabled = false;
         }
 
@@ -46,42 +52,41 @@ namespace Lab_five
         {
             timer.Start();
             StartButton.Enabled = false;
-            ShowImages();
+            CurrentImgID = KeysList.First();
+            imagesBox.Image = Image.FromFile(ImagesFileList[CurrentImgID]);
         }
-        private void ShowImages ( )
+        private void showNextImage ( )
         {
-            var ShuffleDic = ImagesFileList.OrderBy(x => random.Next());
-            foreach (var image in ShuffleDic)
+            if (showedImages.Count < ImagesDictionary.Count || Countdown_time.TotalSeconds != 0)
             {
-                if (showedImages.Count < ImagesDictionary.Count || Countdown_time.TotalSeconds != 0)
+                CurrentImgID = KeysList.
+                imagesBox.Image = Image.FromFile(ImagesFileList[CurrentImgID]);
+            }
+            else 
+            {
+                ShowResult();
+            }
+            
+
+        }
+
+        private void ChoouseAnswerAndCompare (string inputAnswer)
+        {
+            
+                if (inputAnswer.Equals(ImagesDictionary[CurrentImgID]))
                 {
-                    CurrentImgID = image.Key;
-                    imagesBox.Image = Image.FromFile(image.Value);
-                    ChoouseAnswerAndCompare();
+                    answersList.Add(1);
+                    statusBox.Text = "Правильно!";
                 }
                 else
                 {
-                    ShowResult();
-
+                    answersList.Add(0);
+                    statusBox.Text = "Не правильно!";
                 }
-            }
-
-        }
-
-        private void ChoouseAnswerAndCompare ( )
-        {
-            comboBox1.Enabled = true;
-            if (Answer.Equals(ImagesDictionary[CurrentImgID]))
-            {
-                answersList.Add(1);
-                statusBox.Text = "Правильно";
-            }
-            else
-            {
-                answersList.Add(0);
-                statusBox.Text = "Не правильно";
-            }
+     
             showedImages.Add(CurrentImgID);
+            showNextImage();
+
 
         }
 
@@ -90,7 +95,7 @@ namespace Lab_five
 
         private void ShowResult ( )
         {
-            resultBox.Text = "Количество правильных ответов: " + answersList.Sum() + "/n" + "В процентном соотношении угадано: "
+            resultBox.Text = "Количество правильных ответов: " + answersList.Sum() + "\r\n" + "В процентном соотношении угадано: "
                 + answersList.Sum() * 10 / 100 + "%";
         }
 
@@ -133,8 +138,9 @@ namespace Lab_five
 
         private void comboBox1_SelectedIndexChanged ( object sender, EventArgs e )
         {
-            ComboBox box = (ComboBox) sender;
-            Answer = box.SelectedItem.ToString();
+            ComboBox cmb = (ComboBox) sender;
+            string Answer = cmb.Text;
+            ChoouseAnswerAndCompare(Answer);
         }
     }
 }

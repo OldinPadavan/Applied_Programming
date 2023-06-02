@@ -71,6 +71,7 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "А. Невского",
@@ -89,17 +90,24 @@
             // 
             // statusBox
             // 
+            this.statusBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.statusBox.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.statusBox.Location = new System.Drawing.Point(298, 247);
             this.statusBox.Multiline = true;
             this.statusBox.Name = "statusBox";
+            this.statusBox.ReadOnly = true;
             this.statusBox.Size = new System.Drawing.Size(220, 92);
             this.statusBox.TabIndex = 5;
+            this.statusBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // resultBox
             // 
+            this.resultBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.resultBox.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.resultBox.Location = new System.Drawing.Point(524, 247);
             this.resultBox.Multiline = true;
             this.resultBox.Name = "resultBox";
+            this.resultBox.ReadOnly = true;
             this.resultBox.Size = new System.Drawing.Size(264, 169);
             this.resultBox.TabIndex = 6;
             // 
