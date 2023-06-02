@@ -34,7 +34,7 @@ namespace Lab_five
             {7, "G:\\Учеба второй курс\\C# projects\\Lab_Five\\images\\Volodarskiy.jpg"}
         };
         private TimeSpan Countdown_time = TimeSpan.FromMinutes(3);
-        private List<int> KeysList;
+        private Queue<int> QueueKeys;
 
 
 
@@ -43,23 +43,27 @@ namespace Lab_five
         public GameForm ( )
         {
             InitializeComponent();
-            var ShuffleDic = (Dictionary<int, string>)ImagesFileList.OrderBy(x => random.Next());
-            KeysList = ShuffleDic.Keys.ToList();
-            comboBox1.Enabled = false;
+            var ShuffleDic = ImagesFileList.OrderBy(x => random.Next());
+            QueueKeys = new Queue<int>();
+            foreach(var a in ShuffleDic)
+            {
+                QueueKeys.Enqueue(a.Key);
+            }
+            comboBox1.Enabled = true;
         }
 
         private void StartButton_Click ( object sender, EventArgs e )
         {
             timer.Start();
             StartButton.Enabled = false;
-            CurrentImgID = KeysList.First();
+            CurrentImgID = QueueKeys.Dequeue();
             imagesBox.Image = Image.FromFile(ImagesFileList[CurrentImgID]);
         }
         private void showNextImage ( )
         {
-            if (showedImages.Count < ImagesDictionary.Count || Countdown_time.TotalSeconds != 0)
+            if (QueueKeys.Count > 0 && Countdown_time.TotalSeconds != 0 )
             {
-                CurrentImgID = KeysList.
+                CurrentImgID = QueueKeys.Dequeue();
                 imagesBox.Image = Image.FromFile(ImagesFileList[CurrentImgID]);
             }
             else 
