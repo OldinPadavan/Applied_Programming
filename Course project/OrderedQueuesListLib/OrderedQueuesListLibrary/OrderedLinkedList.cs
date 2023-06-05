@@ -134,7 +134,8 @@ namespace OrderedQueuesListLibrary
             Element current = head;
             while (current != null)
             {
-                allElements = allElements + current.Data.ToString;
+                allElements = allElements + current.ToString() + "\n";
+                current = current.Next;
                 
             }
             return allElements;
@@ -163,16 +164,17 @@ namespace OrderedQueuesListLibrary
             public Element Previous { get; set; }
             public int ElementId { get; set; }
 
+
             public Element (Queue<T> data)
             {
                 this.Data = data;
-                this.ElementId = count;
+                this.ElementId = count + 1;
                
             }
 
             public override string ToString ( )
             {
-                return "Номер очереди = " + ElementId + ", количество элементов в очереди: " + Data.ToString();
+                return "Очедь Id = " + ElementId + " " + this.Data.ToString();
             }
 
         }
