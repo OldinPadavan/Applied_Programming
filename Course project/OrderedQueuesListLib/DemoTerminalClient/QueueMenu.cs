@@ -11,12 +11,10 @@ namespace DemoTerminalClient
     {
         private int SelectedIndex;
         private string[] Options;
-        private string Prompt;
         private OrderedQueuesListLibrary.Queue<string> queue;
 
-        public QueueMenu ( string prompt, string[] options, OrderedQueuesListLibrary.Queue<string> queue )
+        public QueueMenu (string[] options, OrderedQueuesListLibrary.Queue<string> queue )
         {
-            Prompt = prompt;
             Options = options;
             SelectedIndex = 0;
             this.queue = queue;
@@ -24,7 +22,8 @@ namespace DemoTerminalClient
 
         private void DisplayOptions ( )
         {
-            Console.WriteLine(Prompt);
+
+            Utils.ShowQueueElements(queue);
             for (int i = 0; i < Options.Length; i++)
             {
                 string currentOptions = Options[i];

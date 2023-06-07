@@ -49,7 +49,7 @@ namespace DemoTerminalClient
         {
             Utils.ShowGeneratedList(demoList);
             string prompt = "Выберите операцию: ";
-            string[] options = { "Добавать очередь(ручной ввод)", "Добавить очередь(автогенерация)", "Удалить очередь", "Вернуться в главное меню" };
+            string[] options = { "Добавать очередь(ручной ввод)", "Добавить очередь(автогенерация)", "Выбрать очередь", "Удалить очередь", "Вернуться в главное меню" };
             ChooseQueuesMenu chooseQueuesMenu = new ChooseQueuesMenu(prompt, options, demoList);
             int selectedIndex = chooseQueuesMenu.Run();
 
@@ -57,56 +57,52 @@ namespace DemoTerminalClient
             {
                 case 0:
                     Utils.AddQueue(demoList);
-                    RunCurrentListMenu();
                     break;
                 case 1:
                     Utils.AddRandomQueue(demoList);
-                    RunCurrentListMenu();
                     break;
                 case 2:
+                    Console.Write("Введите ID для выбора очереди: ");
+                    int id = Convert.ToInt32(Console.ReadLine());
+                    RunQueueMenu(id);
+                    break;
+                case 3:
                     Utils.RemoveQueueFromList(demoList);
                     RunCurrentListMenu();
                     break;
-                case 3:
-                    
-
                 case 4:
                     RunMainMenu();
                     break;
 
             }
+            RunCurrentListMenu();
         }
 
-        private void RunQueueMenu ( )
+        private void RunQueueMenu (int id)
         {
-            Utils.ShowGeneratedList(demoList);
-            string prompt = "Выберите операцию: ";
-            string[] options = { "Взять элемент", "Положить элемент", "Вернуться в список очередей"};
-            QueueMenu QueueMenu = new QueueMenu(prompt, options, demoList);
-            int selectedIndex = chooseQueuesMenu.Run();
+            OrderedQueuesListLibrary.Queue<string> SelectedQueue = demoList.FindById(id);
+            string[] options = { "Положить элемент", "Взять элемент", "Вернуться в список очередей"};
+            QueueMenu QueueMenu = new QueueMenu(options, SelectedQueue);
+            int selectedIndex = QueueMenu.Run();
 
             switch (selectedIndex)
             {
                 case 0:
-                    Utils.AddQueue(demoList);
-                    RunCurrentListMenu();
+                    Console.Write("Введите значение для вставки: ");
+                    string value = Console.ReadLine();
+                    Console.WriteLine();
+                    Utils.EnqueueIntoQueue(SelectedQueue, value);
                     break;
                 case 1:
-                    Utils.AddRandomQueue(demoList);
-                    RunCurrentListMenu();
+                    Console.WriteLine("Взятое значение = " + Utils.DequeueIntoQueue(SelectedQueue));
+                    Thread.Sleep(500);
                     break;
                 case 2:
-                    Utils.RemoveQueueFromList(demoList);
                     RunCurrentListMenu();
-                    break;
-                case 3:
-
-
-                case 4:
-                    RunMainMenu();
                     break;
 
             }
+            RunQueueMenu(id);
         }
 
         private void AutoGenerator()

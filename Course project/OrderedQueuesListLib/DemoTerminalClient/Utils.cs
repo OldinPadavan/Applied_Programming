@@ -13,21 +13,28 @@ namespace DemoTerminalClient
         {
             OrderedQueuesListLibrary.OrderedLinkedList<string> demolist = new OrderedQueuesListLibrary.OrderedLinkedList<string>();
             Console.WriteLine("Демо список создан, выберите количество сгенерированных очередей: ");
-            int queuesNumber = Convert.ToInt32(Console.ReadLine());
-
-            for (int i = 1; i < queuesNumber + 1; i++)
+            try
             {
-                Console.WriteLine("Очередь номер: " + i);
-                OrderedQueuesListLibrary.Queue<string> queue = new OrderedQueuesListLibrary.Queue<string>();
-                Console.WriteLine("Введите количество элементов в очерди: ");
-                int elementsNumber = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine("Заполнение очереди элементами");
-                for (int y = 1; y < elementsNumber + 1; y++)
+               int queuesNumber = Convert.ToInt32(Console.ReadLine());
+                for (int i = 1; i < queuesNumber + 1; i++)
                 {
-                    String a = "string : " + y;
-                    queue.Enqueue(a);
+                    Console.WriteLine("Очередь номер: " + i);
+                    OrderedQueuesListLibrary.Queue<string> queue = new OrderedQueuesListLibrary.Queue<string>();
+                    Console.WriteLine("Введите количество элементов в очерди: ");
+                    int elementsNumber = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("Заполнение очереди элементами");
+                    for (int y = 1; y < elementsNumber + 1; y++)
+                    {
+                        String a = "[ " + y + " ]";
+                        queue.Enqueue(a);
+                    }
+                    demolist.Add(queue);
                 }
-                demolist.Add(queue);
+                return demolist;
+            } catch(Exception ex) 
+            {
+                Console.WriteLine("Некорректное значение ввода: " + ex.Message);
+                
             }
             return demolist;
         }
@@ -47,7 +54,7 @@ namespace DemoTerminalClient
                 Console.WriteLine("Заполнение очереди элементами");
                 for (int y = 1; y < elementsNumber + 1; y++)
                 {
-                    String a = "string : " + y;
+                    String a = "[ " + y + " ]";
                     queue.Enqueue(a);
                 }
                 demolist.Add(queue);
@@ -58,7 +65,7 @@ namespace DemoTerminalClient
         }
 
         public static void AddRandomQueue(OrderedLinkedList<string> inputList)
-        {
+        { 
             int rnd = new Random().Next(1, 21);
             OrderedQueuesListLibrary.Queue<string> queue = new OrderedQueuesListLibrary.Queue<string>();
             for (int y = 1; y < rnd; y++)
@@ -71,42 +78,55 @@ namespace DemoTerminalClient
 
         public static void AddQueue ( OrderedLinkedList<string> inputList )
         {
-            Console.Write("Введите количество элементов в очереди: ");
-            int rnd = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine();
-            OrderedQueuesListLibrary.Queue<string> queue = new OrderedQueuesListLibrary.Queue<string>();
-            for(int y = 1; y <= rnd; y++)
+            try
             {
-                Console.WriteLine("Введите значения для элемента " + y);
-                try
+                Console.Write("Введите количество элементов в очереди: ");
+                int rnd = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine();
+                OrderedQueuesListLibrary.Queue<string> queue = new OrderedQueuesListLibrary.Queue<string>();
+                for (int y = 1; y <= rnd; y++)
                 {
-                    String a = Console.ReadLine();
-                    queue.Enqueue(a);
-                } catch(Exception e)
-                {
-                    Console.WriteLine("Ошибка ввода" + e.StackTrace);
+                    Console.WriteLine("Введите значения для элемента " + y);
+                    try
+                    {
+                        String a = Console.ReadLine();
+                        queue.Enqueue(a);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Ошибка ввода" + e.StackTrace);
+                    }
+
                 }
-               
+                inputList.Add(queue);
+            } catch (Exception e) 
+            {
+                Console.WriteLine("Ошибка ввода " + e.Message);
             }
-            inputList.Add(queue);
         }
 
         public static void RemoveQueueFromList (OrderedLinkedList<string> inpulist)
         {
-            Console.Write("Введите ID очереди для удаления: ");
-            int id = Convert.ToInt32(Console.ReadLine());
-            inpulist.Remove(inpulist.FindById(id));
+            try
+            {
+                Console.Write("Введите ID очереди для удаления: ");
+                int id = Convert.ToInt32(Console.ReadLine());
+                inpulist.Remove(inpulist.FindById(id));
+            } catch (Exception e)
+            {
+                Console.WriteLine("Ошибка ввода id" + e.Message);
+            }
             
         }
 
-        public static void EnqueueIntoQueue(OrderedLinkedList<string> inpulist, int id, string value)
+        public static void EnqueueIntoQueue(OrderedQueuesListLibrary.Queue<string> queue, string value)
         {
-            inpulist.FindById(id).Enqueue("[ " + value + " ]");
+            queue.Enqueue("[ " + value + " ]");
         }
 
-        public static string DequeueIntoQueue(OrderedLinkedList<string> inputlist, int id)
+        public static string DequeueIntoQueue(OrderedQueuesListLibrary.Queue<string> queue )
         {
-            return inputlist.FindById(id).Dequeue();
+            return queue.Dequeue();
         }
 
         public static OrderedQueuesListLibrary.Queue<string> GetQueueById ( OrderedLinkedList<string> inputList, int Id )
@@ -125,10 +145,17 @@ namespace DemoTerminalClient
 
         public static void ShowQueueElements(OrderedQueuesListLibrary.Queue<string> queue)
         {
-            Console.WriteLine(queue);
-            foreach (string element in queue)
+            try
             {
-                Console.Write($"{element}" + " ");
+                Console.WriteLine(queue);
+                foreach (string element in queue)
+                {
+                    Console.Write($"{element}" + " ");
+                }
+                Console.WriteLine();
+            } catch (Exception e ) 
+            {
+                Console.WriteLine("Id очереди не найдено, ошибка..." + e.Message);
             }
         }
     }
