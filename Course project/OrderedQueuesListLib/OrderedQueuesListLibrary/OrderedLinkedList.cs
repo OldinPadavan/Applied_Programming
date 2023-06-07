@@ -141,6 +141,20 @@ namespace OrderedQueuesListLibrary
             return allElements;
         }
 
+        public OrderedQueuesListLibrary.Queue<T> FindById(int id)
+        {
+            Element current = head;
+            while (current != null)
+            {
+                if (current.ElementId == id)
+                {
+                    return current.Data;
+                }
+                current = current.Next;
+            }
+            return null;
+        }
+
 
         IEnumerator IEnumerable.GetEnumerator ( )
         {

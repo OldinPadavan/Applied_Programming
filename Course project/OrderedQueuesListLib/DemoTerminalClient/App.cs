@@ -45,16 +45,81 @@ namespace DemoTerminalClient
 
         }
 
+        private void RunCurrentListMenu()
+        {
+            Utils.ShowGeneratedList(demoList);
+            string prompt = "Выберите операцию: ";
+            string[] options = { "Добавать очередь(ручной ввод)", "Добавить очередь(автогенерация)", "Удалить очередь", "Вернуться в главное меню" };
+            ChooseQueuesMenu chooseQueuesMenu = new ChooseQueuesMenu(prompt, options, demoList);
+            int selectedIndex = chooseQueuesMenu.Run();
+
+            switch (selectedIndex)
+            {
+                case 0:
+                    Utils.AddQueue(demoList);
+                    RunCurrentListMenu();
+                    break;
+                case 1:
+                    Utils.AddRandomQueue(demoList);
+                    RunCurrentListMenu();
+                    break;
+                case 2:
+                    Utils.RemoveQueueFromList(demoList);
+                    RunCurrentListMenu();
+                    break;
+                case 3:
+                    
+
+                case 4:
+                    RunMainMenu();
+                    break;
+
+            }
+        }
+
+        private void RunQueueMenu ( )
+        {
+            Utils.ShowGeneratedList(demoList);
+            string prompt = "Выберите операцию: ";
+            string[] options = { "Взять элемент", "Положить элемент", "Вернуться в список очередей"};
+            QueueMenu QueueMenu = new QueueMenu(prompt, options, demoList);
+            int selectedIndex = chooseQueuesMenu.Run();
+
+            switch (selectedIndex)
+            {
+                case 0:
+                    Utils.AddQueue(demoList);
+                    RunCurrentListMenu();
+                    break;
+                case 1:
+                    Utils.AddRandomQueue(demoList);
+                    RunCurrentListMenu();
+                    break;
+                case 2:
+                    Utils.RemoveQueueFromList(demoList);
+                    RunCurrentListMenu();
+                    break;
+                case 3:
+
+
+                case 4:
+                    RunMainMenu();
+                    break;
+
+            }
+        }
+
         private void AutoGenerator()
         {
             demoList = Utils.AutoGenerator();
-            Utils.ShowResult(demoList);
+
+            RunCurrentListMenu();
         }
 
         private void HandGenerator()
         {
             demoList = Utils.HandGenerator();
-            Utils.ShowResult(demoList);     
+            RunCurrentListMenu();
         }
 
         private void Exit ( )

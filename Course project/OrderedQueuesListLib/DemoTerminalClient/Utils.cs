@@ -35,15 +35,15 @@ namespace DemoTerminalClient
         public static OrderedLinkedList<string>AutoGenerator ( )
         {
             OrderedQueuesListLibrary.OrderedLinkedList<string> demolist = new OrderedQueuesListLibrary.OrderedLinkedList<string>();
-            int queuesNumber = new Random().Next(1, 31);
+            int queuesNumber = new Random().Next(1, 16);
             Console.WriteLine("Демо список создан, количество сгенерированных очередей: " + queuesNumber);
 
             for (int i = 1; i <= queuesNumber; i++)
             {
                 Console.WriteLine("Очередь номер: " + i);
                 OrderedQueuesListLibrary.Queue<string> queue = new OrderedQueuesListLibrary.Queue<string>();
-                Console.WriteLine("Количество созданых элементов в очерди: ");
-                int elementsNumber = new Random().Next(1, 51);
+                int elementsNumber = new Random().Next(1, 21);
+                Console.WriteLine("Количество созданых элементов в очерди: " + elementsNumber);
                 Console.WriteLine("Заполнение очереди элементами");
                 for (int y = 1; y < elementsNumber + 1; y++)
                 {
@@ -63,7 +63,7 @@ namespace DemoTerminalClient
             OrderedQueuesListLibrary.Queue<string> queue = new OrderedQueuesListLibrary.Queue<string>();
             for (int y = 1; y < rnd; y++)
             {
-                String a = "string : " + y;
+                String a = "[ " + y + " ]";
                 queue.Enqueue(a);
             }
             inputList.Add(queue);
@@ -91,10 +91,45 @@ namespace DemoTerminalClient
             inputList.Add(queue);
         }
 
-        public static void ShowResult ( OrderedQueuesListLibrary.OrderedLinkedList<string> inputList )
+        public static void RemoveQueueFromList (OrderedLinkedList<string> inpulist)
+        {
+            Console.Write("Введите ID очереди для удаления: ");
+            int id = Convert.ToInt32(Console.ReadLine());
+            inpulist.Remove(inpulist.FindById(id));
+            
+        }
+
+        public static void EnqueueIntoQueue(OrderedLinkedList<string> inpulist, int id, string value)
+        {
+            inpulist.FindById(id).Enqueue("[ " + value + " ]");
+        }
+
+        public static string DequeueIntoQueue(OrderedLinkedList<string> inputlist, int id)
+        {
+            return inputlist.FindById(id).Dequeue();
+        }
+
+        public static OrderedQueuesListLibrary.Queue<string> GetQueueById ( OrderedLinkedList<string> inputList, int Id )
+        { 
+            return inputList.FindById( Id );
+        }
+
+        
+
+        public static void ShowGeneratedList ( OrderedQueuesListLibrary.OrderedLinkedList<string> inputList )
         {
             Console.WriteLine("Вывод получишвихся очередей в сортированном порядке: ");
             Console.WriteLine(inputList);
+
+        }
+
+        public static void ShowQueueElements(OrderedQueuesListLibrary.Queue<string> queue)
+        {
+            Console.WriteLine(queue);
+            foreach (string element in queue)
+            {
+                Console.Write($"{element}" + " ");
+            }
         }
     }
 }
