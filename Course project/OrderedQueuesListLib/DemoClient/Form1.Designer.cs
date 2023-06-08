@@ -28,17 +28,14 @@
         /// </summary>
         private void InitializeComponent ( )
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.textBoxOrderNumber = new System.Windows.Forms.TextBox();
             this.buttonAddQueue = new System.Windows.Forms.Button();
             this.buttonDeleteQueue = new System.Windows.Forms.Button();
             this.panelQueueCommands = new System.Windows.Forms.Panel();
             this.buttonGetNumber = new System.Windows.Forms.Button();
             this.buttonSetNumber = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panelQueueCommands.SuspendLayout();
             this.SuspendLayout();
-            // 
             // 
             // textBoxOrderNumber
             // 
@@ -115,10 +112,8 @@
             this.Controls.Add(this.buttonDeleteQueue);
             this.Controls.Add(this.buttonAddQueue);
             this.Controls.Add(this.textBoxOrderNumber);
-            this.Controls.Add(this.dataGridView1);
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panelQueueCommands.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -126,8 +121,6 @@
         }
 
         #endregion
-
-        private DataGridView dataGridView1;
         private TextBox textBoxOrderNumber;
         private Button buttonAddQueue;
         private Button buttonDeleteQueue;

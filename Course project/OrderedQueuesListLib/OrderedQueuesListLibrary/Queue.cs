@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace OrderedQueuesListLibrary
 {
     public class Queue <T> : IEnumerable<T>
     {
-        Node<T> head;
-        Node<T> tail;
-        int count;
+        private Node<T> head;
+        private Node<T> tail;
+        private int count;
 
         public void Enqueue(T data) // добавление в очередь
         {

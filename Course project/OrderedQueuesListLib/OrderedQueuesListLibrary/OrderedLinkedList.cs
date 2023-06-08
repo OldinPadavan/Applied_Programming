@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
+
 
 //Объектная реализация упорядоченного списка очередей
 
@@ -18,7 +13,7 @@ namespace OrderedQueuesListLibrary
         private static int count;  // количество элементов в списке
 
 
-        public OrderedLinkedList ( )
+        public OrderedLinkedList()
         {
             head = null;
             tail = null;
@@ -26,7 +21,7 @@ namespace OrderedQueuesListLibrary
         }
 
         // добавление элемента
-        public void Add (Queue<T> data ) // поиск места вставки(сортировка на осонове длинны очереди) и вставка нового элемента
+        public void Add (Queue<T> data) // поиск места вставки(сортировка на осонове длинны очереди) и вставка нового элемента
         {
             Element NewNode = new Element(data);
             Element Previous = null;
@@ -48,7 +43,7 @@ namespace OrderedQueuesListLibrary
             count++;
         }
         // удаление элемента
-        public bool Remove ( Queue<T> data )
+        public bool Remove (Queue<T> data)
         {
             Element current = head;
             Element previous = null;
@@ -88,7 +83,7 @@ namespace OrderedQueuesListLibrary
             return false;
         }
 
-        public void Print ( )
+        public void Print()
         {
             if (!IsEmpty)
             {
@@ -116,7 +111,7 @@ namespace OrderedQueuesListLibrary
             count = 0;
         }
         // содержит ли список элемент
-        public bool Contains ( Queue<T> data )
+        public bool Contains(Queue<T> data)
         {
             Element current = head;
             while (current != null)
@@ -128,7 +123,7 @@ namespace OrderedQueuesListLibrary
             return false;
         }
 
-        public override string ToString ( )
+        public override string ToString()
         {
             string allElements = "";
             Element current = head;
@@ -156,12 +151,12 @@ namespace OrderedQueuesListLibrary
         }
 
 
-        IEnumerator IEnumerable.GetEnumerator ( )
+        IEnumerator IEnumerable.GetEnumerator()
         {
             return ((IEnumerable<T>)this).GetEnumerator();
         }
 
-        public IEnumerator<Queue<T>> GetEnumerator ( )
+        public IEnumerator<Queue<T>> GetEnumerator()
         {
             Element current = head;
             while (current != null)
