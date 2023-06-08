@@ -188,7 +188,7 @@ namespace OrderedQueuesListLibrary
 
             public override string ToString ( )
             {
-                return "Очедь Id = " + ElementId + " " + this.Data.ToString();
+                return "Очередь Id = " + ElementId + " " + this.Data.ToString();
             }
 
         }
